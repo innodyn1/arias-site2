@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arias Chatbot</title>
+  <style>
+	html, body {
+	  margin: 0;
+	  padding: 0;
+	  height: 100%;
+	  width: 100%;
+	  font-family: sans-serif;
+	}
+	#chatbot-container {
+	  height: 100vh;
+	  width: 100vw;
+	  max-width: 100%;
+	  box-sizing: border-box;
+	}
+  </style>
+</head>
+<body>
+  <div id="chatbot-container">
+	<flowise-fullchatbot></flowise-fullchatbot>
+  </div>
+
+  <script type="module">
+	import Chatbot from "https://cdn.jsdelivr.net/gh/innodyn1/FlowiseChatEmbed@latest/dist/web.js";
+
+	// Extract university and course from the URL query string
+	const urlParams  = new URLSearchParams(window.location.search);
+	const university = urlParams.get("university") || "GSU"; // Changed default to "GSU"
+	const course     = urlParams.get("course")     || "MBA8125"; // Changed default to "MBA8125"
+
+	console.log("Initializing Flowise with:", { university, course });
+
+	// Initialize the Flowise full-page embed, passing vars to override flow settings
+	Chatbot.initFull({
+	  chatflowid: "0e137e52-b9b6-4ee2-80c1-ad0244c32bb4",
+	  apiHost:   "https://arias-ai-engine.com",
+	  chatflowConfig: {
+		vars: {
+		  university,
+		  course
+		}
+	  }
+	});
+  </script>
+</body>
+</html>
