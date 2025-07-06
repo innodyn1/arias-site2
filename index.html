@@ -29,9 +29,9 @@
 	import Chatbot from "https://cdn.jsdelivr.net/gh/innodyn1/FlowiseChatEmbed@latest/dist/web.js";
 
 	// Extract university and course from the URL query string
-	const urlParams  = new URLSearchParams(window.location.search);
-	const university = urlParams.get("university") || "GSU"; // Changed default to "GSU"
-	const course     = urlParams.get("course")     || "MBA8125"; // Changed default to "MBA8125"
+	const urlParams  = new URLSearchParams(window.location.search);
+	const university = urlParams.get("university") || "unknown_university";
+	const course     = urlParams.get("course")     || "unknown_course";
 
 	console.log("Initializing Flowise with:", { university, course });
 
